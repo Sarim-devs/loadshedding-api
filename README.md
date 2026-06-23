@@ -48,20 +48,23 @@ Run tests:
 ```bash
 python3 -m unittest discover -v
 ```
-## Project Structure
-app/
-main.py          # Route handlers
-data_store.py    # In-memory data layer
-enrichment.py    # City/grid derivation
-time_utils.py    # Outage time math
-models.py        # Pydantic response models
-data/
-schedule_latest.json   # Scraper output
-tests/
-test_time_utils.py
-test_enrichment.py
-test_api.py
 
+## Project Structure
+
+```
+app/
+  main.py          # Route handlers
+  data_store.py    # In-memory data layer
+  enrichment.py    # City/grid derivation
+  time_utils.py    # Outage time math
+  models.py        # Pydantic response models
+data/
+  schedule_latest.json   # Scraper output
+tests/
+  test_time_utils.py
+  test_enrichment.py
+  test_api.py
+```
 ## Part of Pak Roshan
 This API is one layer of a larger project:
 - **Scraper** — Python scripts pulling live data from LESCO/K-Electric
@@ -69,10 +72,4 @@ This API is one layer of a larger project:
 - **Flutter App** — Mobile app with notifications, widgets, offline mode
 
 ## Author
-Muhammad Sarim Usman — 2nd semester CS student, FAST NUCES Rawalpindi
-
-
-
-
-
-## Project Structure
+Muhammad Sarim Usman — 2nd semester CS student, FAST NUCES Rawalpind
