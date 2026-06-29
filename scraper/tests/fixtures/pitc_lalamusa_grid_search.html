@@ -1,0 +1,119 @@
+<!--
+Trimmed from a real HAR capture of:
+https://ccms.pitc.com.pk/flsfeeder_index?search_type=grid&search_value=Lalamusa
+captured 2026-06-19. The original response was ~1.3MB of mostly verbose
+server-rendered whitespace/boilerplate; this fixture keeps only the
+search_type dropdown and the results table. Every feeder code, name,
+grid label, disco, and detail-page href below was extracted directly
+from the real captured response -- none of it is fabricated.
+
+Note on the href hash IDs (e.g. "69df528249dcf"): they share the prefix
+"69df52" across all 10 rows captured in the same page load, which looks
+like a timestamp-derived token generated at render time rather than a
+stable per-feeder database key. Treat these as session/request-scoped,
+not as IDs to cache and reuse later -- always do a fresh search before
+following a detail link. See providers/pitc_ccms_parser.py.
+-->
+<html>
+<body>
+<select name="search_type" id="search_type">
+  <option value="">Please Select</option>
+  <option value="city">City Name</option>
+  <option value="grid">Grid Name</option>
+  <option value="feeder_name">Feeder Name</option>
+  <option value="feeder_code">Feeder Code</option>
+</select>
+
+<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+<tbody>
+<tr>
+  <th>Feeder Code</th>
+  <th>Feeder Name</th>
+  <th>City</th>
+  <th>Grid Station</th>
+  <th>Disco</th>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df528249dcf/detail?search_type=grid&amp;search_value=Lalamusa">011613</a></td>
+  <td>Main Bazar (CD)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df527e53749/detail?search_type=grid&amp;search_value=Lalamusa">011603</a></td>
+  <td>Lalamusa (CD)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df527a4bd3c/detail?search_type=grid&amp;search_value=Lalamusa">011620</a></td>
+  <td>Chakori Sharif (R)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df5274dd3a6/detail?search_type=grid&amp;search_value=Lalamusa">011609</a></td>
+  <td>Rehmani ( TD )</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df527079841/detail?search_type=grid&amp;search_value=Lalamusa">011605</a></td>
+  <td>Paswal (TD)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df526c91e04/detail?search_type=grid&amp;search_value=Lalamusa">011615</a></td>
+  <td>Umar Chack ( R)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df526939f0b/detail?search_type=grid&amp;search_value=Lalamusa">011610</a></td>
+  <td>Dina Chak (TD)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df5264804d7/detail?search_type=grid&amp;search_value=Lalamusa">011607</a></td>
+  <td>Ali Chak ( R)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df5261846ac/detail?search_type=grid&amp;search_value=Lalamusa">011614</a></td>
+  <td>Dhama Road (U)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+<tr>
+  <td><a class="btn btn-white btn-info btn-bold" href="https://ccms.pitc.com.pk/flsfeeder/69df525e4ce5c/detail?search_type=grid&amp;search_value=Lalamusa">011604</a></td>
+  <td>Pak Pur (U)</td>
+  <td></td>
+  <td>132 KV
+Lalamusa</td>
+  <td>GEPCO</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

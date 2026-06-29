@@ -1,0 +1,146 @@
+name: Scrape and Deploy
+
+# When does this run?
+# 1. On a schedule: 9 PM UTC every day = 2 AM PKT (Pakistan is UTC+5).
+#    Chosen because K-Electric usually publishes new schedules midweek,
+#    and this catches overnight updates before the Pakistani morning.
+# 2. Manually: the "Run workflow" button in GitHub's Actions tab --
+#    useful any time you want to force a fresh pull without waiting for
+#    the scheduled run. Use this if K-Electric just published a new PDF
+#    and you don't want to wait until tomorrow.
+on:
+  schedule:
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+
+    # The whole job should never take more than 10 minutes -- a
+    # reasonable upper bound is: scraper ~5 min, git ops ~30 sec.
+    # If it goes over that something is genuinely stuck (infinite
+    # retry loop against a down site, etc.) and we should bail and
+    # get a failure notification rather than burning Action minutes.
+    timeout-minutes: 15
+
+    steps:
+      # ----------------------------------------------------------------
+      # Step 1: Check out the repo WITH push permission.
+      # The default GITHUB_TOKEN is enough -- we don't need a PAT since
+      # we're committing to the same repo the Action lives in.
+      # ----------------------------------------------------------------
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ----------------------------------------------------------------
+      # Step 2: Set up Python with pip caching.
+      # The `cache-dependency-path` points at the scraper's own
+      # requirements.txt so the cache key invalidates whenever those
+      # deps change -- not on every run.
+      # ----------------------------------------------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: 'scraper/requirements.txt'
+
+      - name: Install scraper dependencies
+        run: pip install -r scraper/requirements.txt
+
+      # ----------------------------------------------------------------
+      # Step 3: Run the actual scraper.
+      # `run.py` is designed to exit 0 if at least one source succeeded
+      # and 1 if every source failed -- so `continue-on-error: true`
+      # plus the explicit exit-code capture below is what lets us
+      # distinguish "partially ok" (still worth committing) from
+      # "completely dead" (don't overwrite the current good data).
+      # ----------------------------------------------------------------
+      - name: Run scraper
+        id: scraper
+        working-directory: scraper
+        run: |
+          python3 run.py --pretty
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      # ----------------------------------------------------------------
+      # Step 4: Safety guard -- the most important step.
+      #
+      # This is why `continue-on-error: true` exists above: a bad run
+      # (both K-Electric and PITC blocked by 403s, a temporary outage,
+      # whatever) would produce a valid JSON file with 0 feeders and
+      # 0 cycles -- which, if we committed it, would silently wipe out
+      # the existing good data and make the app show "no schedules
+      # available" to every user until the NEXT successful run. This
+      # check fails the job loudly instead, so the existing
+      # `data/schedule_latest.json` stays untouched.
+      #
+      # The 300-feeder threshold is conservative: K-Electric alone
+      # reliably produces 621 even when PITC is having a bad day, so
+      # anything below 300 means K-Electric itself failed too, which
+      # means the data is not worth committing.
+      # ----------------------------------------------------------------
+      - name: Validate output before overwriting production data
+        run: |
+          python3 - << 'EOF'
+          import json, sys
+
+          try:
+              data = json.loads(open('scraper/output/schedule_latest.json').read())
+          except Exception as e:
+              print(f"FAIL: could not read scraper output: {e}")
+              sys.exit(1)
+
+          sources = data.get('sources', [])
+          usable_feeders = sum(
+              s['feeder_count']
+              for s in sources
+              if s.get('status') in ('ok', 'partial') and s.get('feeder_count', 0) > 0
+          )
+
+          print(f"Usable feeders across all sources: {usable_feeders}")
+          for s in sources:
+              print(f"  {s['source']}: {s['status']} - {s['feeder_count']} feeders")
+
+          if usable_feeders < 300:
+              print(f"\nFAIL: only {usable_feeders} usable feeders (threshold: 300).")
+              print("Not overwriting production data. Check the scraper logs above.")
+              sys.exit(1)
+
+          print(f"\nOK: {usable_feeders} usable feeders. Safe to deploy.")
+          EOF
+
+      # ----------------------------------------------------------------
+      # Step 5: Copy the fresh data into the API's data/ directory.
+      # Only reached if step 4 passed -- the data is real.
+      # ----------------------------------------------------------------
+      - name: Update production data file
+        run: cp scraper/output/schedule_latest.json data/schedule_latest.json
+
+      # ----------------------------------------------------------------
+      # Step 6: Commit and push -- ONLY if the file actually changed.
+      # K-Electric publishes a new schedule once a week, so most daily
+      # runs will produce identical data for 6 of 7 days. The
+      # `git diff --staged --quiet` check skips the commit (and the
+      # Railway redeploy it would trigger) on those days -- no point
+      # redeploying an identical file.
+      # ----------------------------------------------------------------
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/schedule_latest.json
+
+          if git diff --staged --quiet; then
+            echo "Data is identical to the current version -- no commit needed."
+          else
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+            git commit -m "Auto-update schedule data [$TIMESTAMP]"
+            git push
+            echo "Pushed. Railway will pick up the new data and redeploy automatically."
+          fi

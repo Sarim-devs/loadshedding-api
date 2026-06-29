@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Scraper intermediate output (only data/schedule_latest.json
+# is committed -- the timestamped copies in scraper/output/ are
+# ephemeral and not needed in the repo)
+scraper/output/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store

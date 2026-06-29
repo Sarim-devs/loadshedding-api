@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="PITC, Roshan Pakistan, Wapda Complaint Cell, Complaint Electricity Pakistan, Customer Complaint Management System, Call 118, SMS 118, Apollo telecom">
+    <title>  Load Management Info  | Customer Complaint Management System + </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="csrf-token" content="p7q935PT45514n1Zaf8mnJWMG3cy4jNmAWo2H2tF">
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link href="https://ccms.pitc.com.pk/public/admin/assets/images/logo/logo.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/jquery.gritter.min.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/fonts.googleapis.com.css" />
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/chosen.min.css" />
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/bootstrap-colorpicker.min.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/custom.min.css"/>
+
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+    <![endif]-->
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="https://ccms.pitc.com.pk/public/admin/assets/css/jnt-styles.css" />
+
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+        <!-- ace settings handler -->
+    <script src="https://ccms.pitc.com.pk/public/admin/assets/js/jquery-2.1.4.min.js"></script>
+
+    <script src="https://ccms.pitc.com.pk/public/admin/assets/js/admin-menu.js"></script>
+    <script src="https://ccms.pitc.com.pk/public/admin/assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+</head>
+    <style>
+.navbar .navbar-nav>li>a {
+    padding-top: 17px;
+    padding-bottom: 0px;
+    height: 56px;
+    background-color: transparent;
+    font-size: 13px;
+    color: #FFF;
+    text-shadow: 0 1px 0 rgba(0,0,0,.25);
+}
+
+
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/* li:hover {
+  background-color: #3e8e41; !important
+} */
+
+li:hover {
+    color: #4B88B7;
+    background-color: #F1F5F9;
+}
+
+</style>
+<div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="https://ccms.pitc.com.pk/home"  class="navbar-brand" style="padding-top: 12px;">
+                <p style="margin-bottom :0px;">
+                    <img src="https://ccms.pitc.com.pk/public/admin/assets/images/logo/logo.png" height="40" style="margin-top:-6px;"/> <b>CCMS + </b>
+</p>
+            </a>
+
+            <button class="pull-right navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+
+
+        <nav role="navigation" id="sidebar" class="navbar-menu pull-right collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                <li   >
+                    <a href="https://ccms.pitc.com.pk/home">
+                        <i class="ace-icon fa fa-home"></i>
+                        Home
+                    </a>
+                </li>
+
+              <!--  <li>
+                    <a href="http://pitc.com.pk/index.php/projects">
+                        <i class="ace-icon fa fa-briefcase "></i>
+                        Projects
+                    </a>
+                </li>
+                <li>
+                    <a href="http://pitc.com.pk/index.php/clients">
+                        <i class="ace-icon fa fa-users"></i>
+                        Clients
+                    </a>
+                </li>
+-->
+                <li  >
+                    <a href="https://ccms.pitc.com.pk/complaint">
+                        <i class="ace-icon fa  fa-comments-o"></i>
+                        Register Complaint
+                    </a>
+                </li>
+                <li  >
+                    <a href="https://ccms.pitc.com.pk/FeederDetails">
+                        <i class="ace-icon fa fa-home"></i>
+                        Feeder Details
+                    </a>
+                </li>
+
+
+
+                <li  >
+
+                    <a href="https://ccms.pitc.com.pk/complainthistory">
+                        <i class="ace-icon fa fa-comments"></i>
+                        Track by Reference
+                    </a>
+                  </li>
+                   <li  >
+                    <a href="https://ccms.pitc.com.pk/tracking/ticket">
+                        <i class="ace-icon fa fa-comments"></i>
+                        Track by Ticket
+                    </a>
+
+
+
+                </li>
+
+
+                <li   >
+                    <a href="https://ccms.pitc.com.pk/verifycustomer">
+                        <i class="ace-icon fa fa-comments"></i>
+                        Verify Customer
+                    </a>
+                </li>
+                <li  >
+                    <a href="https://ccms.pitc.com.pk/contact">
+                        <i class="ace-icon fa fa-envelope"></i>
+                        Contact
+                    </a>
+                </li>
+
+<li  >
+                    <a href="https://ccms.pitc.com.pk/login">
+                        <i class="ace-icon fa fa-key"></i>
+                        Login
+                    </a>
+                </li>
+            </ul>
+
+            <!-- <form class="navbar-form navbar-left form-search" action="https://ccms.pitc.com.pk/complainthistory" role="search">
+                <div class="form-group">
+                    <input style="width:180px" type="text"  value="" name="reference"  placeholder="Enter search reference..." autofocus required>
+                </div>
+                <button type="submit" class="btn btn-mini btn-info2">
+                    <i class="ace-icon fa fa-search icon-only bigger-110"></i>
+                </button>
+            </form> -->
+        </nav>
+    </div><!-- /.navbar-container -->
+</div>
+    <body class="no-skin">
+    <div class="main-container ace-save-state" id="main-container">
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                             <style type="text/css">
+    #date {
+        background: rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+        padding: 0.5em;
+        text-align: center;
+    }
+
+    #clock {
+        align-items: center;
+        -webkit-align-items: center;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-around;
+        -webkit-justify-content: space-around;
+        /*
+          left: calc(50% - 300px);
+          position: absolute;
+          top: calc(50% - 65px);
+          */
+
+    }
+
+    .unit {
+        background: linear-gradient(#aaa, #777);
+        border-radius: 5px;
+        box-shadow: 0 2px 2px #444;
+        color: #fff;
+        font-family: "Open Sans", sans-serif;
+        font-size: 17px;
+        height: 100%;
+        line-height: 14px;
+        margin: 0 5px;
+        text-align: center;
+        text-shadow: 0 2px 2px #666;
+        width: 36px;
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 1170px;
+    }
+
+
+    #sp-main-body-wrapper {
+        background: rgba(246, 180, 74, 0) !important;
+    }
+
+    #sp-main-body-wrapper {
+        background: rgba(246, 180, 74, 0) !important;
+    }
+
+    #sp-main-body-wrapper {
+        background: rgba(246, 180, 74, 0) !important;
+    }
+
+    img.sp_simple_gallery {
+        margin: 0 20px 20px 0;
+        border-radius: 2px;
+    }
+
+    #sp-smart-slider.sp-awetive-layout,
+    .sp-awetive-layout .sp-slider-item {
+        height: 400px;
+    }
+
+    @media (max-width:767px) {
+
+        #sp-smart-slider.sp-awetive-layout,
+        .sp-awetive-layout .sp-slider-item {
+            height: 400px;
+        }
+    }
+
+    @media (max-width:480px) {
+
+        #sp-smart-slider.sp-awetive-layout,
+        .sp-awetive-layout .sp-slider-item {
+            height: 300px;
+        }
+    }
+
+    .modal-body {
+        position: relative;
+        max-height: inherit;
+        padding: 15px;
+
+    }
+
+    #feeder_graph {
+        color: #fff;
+        height: 520px;
+        background: #ccc;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 0px solid #000;
+        display: none;
+        padding: 5px;
+    }
+
+    td.day,
+    td:hover.day {
+        background-color: #49afcd !important;
+        color: #fff !important;
+    }
+
+    td.night,
+    td:hover.night {
+        background-color: #444 !important;
+        color: #fff !important;
+    }
+
+    .block_info {
+        display: none;
+        padding: 0.5em;
+        width: 360px;
+        margin-right: 30px;
+        margin-bottom: 25px;
+        background: lightyellow;
+        /*#f4f4f4;*/
+        font-size: 12px;
+        border: 1px solid #e1e1e1;
+        float: right;
+    }
+
+    .lbl-catg {
+        float: left;
+        margin-left: 5px;
+        cursor: pointer;
+        background-color: #000;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        white-space: nowrap;
+        vertical-align: baseline;
+    }
+
+    .trp {
+        float: right;
+        clear: right;
+        margin-bottom: 5px;
+    }
+
+    #net_metering {
+        color: green;
+        font-weight: bold;
+    }
+
+    #total_off,
+    #live_off,
+    #act_off,
+    #net_metering,
+    #category {
+        cursor: pointer;
+    }
+</style>
+<form>
+    
+    <div class="row" style="background-color:#f5f5f5;height:130px;">
+
+        <h3 class="complaint">Load Management Portal</h3>
+        <br>
+
+        <div class="col-md-5">
+            <select class="form-control" name="search_type" id="search_type">
+                <option value="">Please Select</option>
+                <option value="city" > City Name</option>
+                <option value="grid"  selected >Grid Name</option>
+                <option value="feeder_name" >Feeder Name</option>
+                <option value="feeder_code" >Feeder Code</option>
+
+            </select>
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="search_value" id="search_value" value="Lalamusa">
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-info btn-sm">
+                <i class="ace-icon fa fa-search bigger-110"></i>Find
+            </button>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-info btn-sm" href="https://ccms.pitc.com.pk/FeederDetails">
+                <i class="ace-icon fa fa-search bigger-110"></i>Find by Reference#
+            </a>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="space-6"></div>
+
+    <div class="col-xl-12">
+
+        <!-- div.dataTables_borderWrap -->
+        <div>
+            <div class="table-header" style="text-align: left;">
+                Load Management Info -- Date 2026-19-06
+            </div>
+
+            <table class="table table-bordered table-hover table-striped" style="margin-bottom:0; white-space: nowrap;">
+                <tbody>
+                    <tr>
+                        <td><b>Feeder:</b> 011613 - MAIN BAZAR (LALA MUSA)</td>
+                        <td><b>Grid:</b> 132 KV Lala Musa</td>
+                        <td>
+                            <span style="float:left; padding-right:5px; font-weight:bold;">Feeder Status: </span>
+                            <span id="glaxy_status" title="Feeder Status" class="label label-info" style="float:left; margin-right:5px; cursor:pointer;">ON</span>
+                            <span style="float: left; padding-top: 2px;padding-left: 5px;color: green;"></span>
+
+                            
+                      
+             <span id="ptw_status"  style="float:left; margin-left:5px; cursor:pointer;"> </span>
+                                     </td>
+                        <td rowspan="2" style="width:100px;">
+                            <span id="total_off" class="label label-danger trp" title="Planned">0 Hour(s)</span>
+                            <span id="live_off" class="label label-info trp" title="Actual" style="background-color:#641918;">00h 00m</span>
+                            <span id="act_off" class="label label-warning trp" title="History">00h 00m</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span style="float:left; padding-right:5px; font-weight:bold;">Category:</span><span id="category" class="label lbl-catg" title="I=Upto 10  II=10 to 20 III=20 to 30    IV=30 to 40 V=40 to 60  VI=60 to 80 VII=80.1 &amp; Above">I</span></td>
+                        <td><span style="float:left; padding-right:5px; font-weight:bold;">Loss %:</span><span id="loss_per" class="label lbl-catg">2.44</span></td>
+                        <td>
+                            <div id="nm_data"><span style="float:left; padding-right:5px; font-weight:bold;">Net Metering Capacity:</span><span id="net_metering" title=""><span style="color:red;">Not Available</span></span></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered table-hover table-striped">
+                <tbody>
+
+                    <tr class="tr1">
+                        <td></td>
+                        <td>Tomorrow</td>
+                        <td colspan="2" style="text-align:center;">Today</td>
+                        <td>Yesterday</td>
+
+                        <td></td>
+                        <td>Tomorrow</td>
+                        <td colspan="2" style="text-align:center;">Today</td>
+                        <td>Yesterday</td>
+                    </tr>
+
+
+                    <tr class="tr1">
+                        <td>AM</td>
+                        <td>Schedule</td>
+                        <td>Schedule</td>
+                        <td>Actual</td>
+                        <td>Schedule</td>
+
+                        <td>PM</td>
+                        <td>Schedule</td>
+                        <td>Schedule</td>
+                        <td>Actual</td>
+                        <td>Schedule</td>
+
+                    </tr>
+                        <tr>
+        <td class="day">
+            00:15        </td>
+        <td><span class='label label-danger'>OFF </span>        </td>
+        <td><span class='label label-danger'>OFF </span></td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">12:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            01:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">13:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            02:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">14:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            03:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">15:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+                                    <span class="badge badge-primary">ON</span>
+                </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            04:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">16:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            -                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            05:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">17:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            -                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            06:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">18:15</td>
+        <td><span class='label label-danger'>OFF </span></td>
+        <td><span class='label label-danger'>OFF </span></td>
+        <td>
+            -                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            07:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">19:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            -                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            08:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">20:15</td>
+        <td><span class='label label-danger'>OFF </span></td>
+        <td><span class='label label-danger'>OFF </span></td>
+        <td>
+            -                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            09:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">21:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            -                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            10:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">22:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            -                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+        <tr>
+        <td class="day">
+            11:15        </td>
+        <td>ON        </td>
+        <td>ON</td>
+        <td>
+            ON                    </td>
+
+        <td>
+            ON            <!-- ON -->
+        </td>
+
+        <td class="night">23:15</td>
+        <td>ON</td>
+        <td>ON</td>
+        <td>
+            -                    </td>
+        <td>
+            ON
+            <!-- ON -->
+        </td>
+    </tr>
+    
+
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+    </div>
+</div><!-- /.row -->
+   
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+        </div><!-- /.main-content -->
+        <div class="footer" style="background:black">
+    <div class="footer-inner">
+        <div class="footer-content" style=" background-color:#f2f2f2;   padding: 0px;    border-top: 1px double #E5E5E5; position: initial;">
+
+            <span class="bigger-120" style="font-size: 85%!important;     line-height: 30px;">
+
+                <span class="action-buttons" >
+
+                <strong>CCMS</strong> &copy; 2026 Powered By: PITC
+            </span>
+                             <!-- <a href="//www.apollo.com.pk" target="_new"> <img src="https://ccms.pitc.com.pk/public/img/apollo_logo.png" height="30"/></a> -->
+
+            </span>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+    </div><!-- /.main-container -->
+     <!-- basic scripts -->
+
+<!--[if !IE]> -->
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/jquery-2.2.4.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+	var ontouchstartjs ="https://ccms.pitc.com.pk/public/admin/assets/js/jquery.mobile.custom.min.js";
+    if('ontouchstart' in document.documentElement) document.write("<script src='"+ontouchstartjs+"'>"+"<"+"/script>");
+</script>
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/jquery.gritter.min.js"></script>
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/chosen.jquery.min.js"></script>
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/bootstrap-colorpicker.min.js"></script>
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/jquery.validate.min.js"></script>
+<!-- ace scripts -->
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/ace-elements.min.js"></script>
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/ace.min.js"></script>
+<script src="https://ccms.pitc.com.pk/public/admin/assets/js/jnt-admin-scripts.js"></script>
+<!-- inline scripts related to this page -->
+
+<script>
+    $(document).ready(function() {
+        var live_off = "0";
+        $('#live_off').html(convertMintoHr(live_off))
+        var act_off = "0";
+        $('#act_off').html(convertMintoHr(act_off))
+
+        var total_off = "0";
+
+        // $('#total_off').html(total_off + " Hour(s)");
+
+    });
+
+    function convertMintoHr(minutes) {
+        var h = Math.floor(minutes / 60);
+        var m = minutes % 60;
+        h = h < 10 ? '0' + h : h;
+        m = m < 10 ? '0' + m : m;
+        return h + 'h ' + m + 'm';
+    }
+</script>
+</body>                
+</html>
